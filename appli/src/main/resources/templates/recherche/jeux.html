@@ -1,0 +1,15 @@
+
+<th:block th:include="_communs/header.html"></th:block>
+
+ <h2>Résultat de la recherche : <code th:text="${mot}"></code></h2>
+
+ <!-- ul.list-group>li.list-group-item.active+li.list-group-item>span -->
+
+ <ul class="list-group">
+    <li class="list-group-item active" th:txt="${'Jeux contenant le mot ' + mot }"></li>
+    <li class="list-group-item" th:each="jeu: ${jeux}">
+        <span th:text="${jeu.id + ' - ' + jeu.title + ' (de ' + jeu.min + ' à ' + jeu.max + ' joueurs)'}"></span>
+    </li>
+ </ul>
+
+<th:block th:include="_communs/footer.html"></th:block>

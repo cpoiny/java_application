@@ -1,0 +1,27 @@
+<th:block th:include="_communs/header.html"></th:block>
+
+    <h1 class="alert alert-primary text-center">Fiche Partie à supprimer</h1>
+        <!-- <form method="post" th:action="@{/jeu/{id}/supprimer(id=${jeu.id})}" th:object="${jeu}"> -->
+            <form method="post" th:object="${partie}">
+            <div class="form-group">
+                <label for="game">Nom du jeu</label>
+                <input type="text" th:field="*{game}" id="game" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="startDate">Date de la partie</label>
+                <input type="date" th:field="*{startDate}" id="startDate" class="form-control">
+
+                <label for="winner">Vainqueur de la partie</label>
+                <input type="text" th:field="*{winner}" id="winner" class="form-control">
+            </div>
+    
+            <div class="d-flex mt-3 justify-content-between">
+                <button type="submit" class="btn btn-primary">
+                    <i class="fa fa-save"></i> Supprimer
+
+                    </button>
+            </div>
+        </form>
+    <!-- Afficher les informations du joueur -->
+
+    <th:block th:include="_communs/footer.html"></th:block>

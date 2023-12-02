@@ -1,0 +1,31 @@
+
+<th:block th:include="_communs/header.html"></th:block>
+    <h1 class="alert alert-primary text-center">Fiche joueur</h1>
+
+    <ul class="list-group">
+        <li class="list-group-item d-flex">
+            <div class="col">Identifiant:</div>
+            <div class="col" th:text="${joueur.id}"></div>
+        </li>
+        <li class="list-group-item d-flex">
+            <div class="col">Pseudo:</div>
+            <div class="col" th:text="${joueur.nickname}"></div>
+        </li>
+        <li class="list-group-item d-flex">
+            <div class="col">E-mail:</div>
+            <div class="col" th:text="${joueur.email}"></div>
+        </li>
+        <li class="list-group-item d-flex">
+            <div class="col">Participations:</div>
+            <div class="col" th:text="${joueur.contests}"></div>
+        </li>
+        <li class="list-group-item d-flex">
+            <div class="col">Victoires:</div>
+            <div class="col" th:each="win : ${joueur.wins}">
+                <div th:text="${win}"></div>
+            </div>
+        </li>
+    </ul>
+
+    <!-- Afficher les informations du joueur -->
+    <th:block th:include="_communs/footer.html"></th:block>

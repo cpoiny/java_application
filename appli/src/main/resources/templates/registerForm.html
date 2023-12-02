@@ -1,0 +1,26 @@
+<th:block th:include="_communs/header.html"></th:block>
+
+    <h1>Formulaire d'inscription</h1>
+
+
+    <form th:action="@{/inscription}" method="post" th:object="${user}">
+        <div class="form-group">
+            <label for="username">Veuillez renseigner un identifiant</label>
+            <input type="text" id="username" th:field="*{username}" required />
+        </div>
+        <div class="form-group">
+            <label for="password">Mot de passe:</label>
+            <input type="password" id="password" th:field="*{password}" required />
+        </div>
+
+        <div class="d-flex mt-3 justify-content-between">
+            <button type="submit" class="btn btn-primary">
+                <i class="fa-solid fa-right-to-bracket"></i> S'enregistrer
+
+            </button>
+        </div>
+    </form>
+
+
+ 
+<th:block th:include="_communs/footer.html"></th:block>

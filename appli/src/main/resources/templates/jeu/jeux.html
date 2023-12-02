@@ -1,0 +1,37 @@
+
+<th:block th:include="_communs/header.html"></th:block>
+
+    <h1 class="alert alert-primary text-center">Jeux</h1>
+
+    <h2>Liste des jeux
+        <a href="/jeu/ajouter" class="btn btn-primary"><i class="fa fa-plus"></i></a>
+    </h2>
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th><i class="fa fa-cogs"></i></th>
+                <th>ID</th>
+                <th>Non du jeu</th>
+                <th>Min-joueur</th>
+                <th>Max-joueur</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:if="${jeux.empty}">
+                <td colspan="3">Aucun jeu en base de données</td>
+            </tr>
+            <tr th:each="jeu: ${jeux}">
+                <td>
+                    <a th:href="@{/jeu/{id}/fiche(id=${jeu.id})}"><i class="fa fa-file"></i></a>
+                    <a th:href="@{/jeu/{id}/supprimer(id=${jeu.id})}"><i class="fa fa-trash text-danger"></i></a>
+                    <a th:href="@{/jeu/{id}/modifier(id=${jeu.id})}"><i class="fa fa-pen"></i></a>
+                </td>
+                <td><span th:text="${jeu.id}"> Identifiant </span></td>
+                <td><span th:text="${jeu.title}"> Title </span></td>
+                <td><span th:text="${jeu.min}">min-joueur</span></td>
+                <td><span th:text="${jeu.max}">max-joueur</span></td>
+            </tr>
+        </tbody>
+    </table>    
+
+    <th:block th:include="_communs/footer.html"></th:block>

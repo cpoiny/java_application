@@ -1,0 +1,37 @@
+<th:block th:include="_communs/header.html"></th:block>
+
+    <h1 class="alert alert-primary text-center">Liste des joueurs</h1>
+
+    <h2>Liste des joueurs
+        <!--  a.btn.btn-primary>i.fa.fa-plus -->
+        <a href="/joueur/ajouter" class="btn btn-primary"><i class="fa fa-plus"></i></a>
+    </h2>
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th><i class="fa fa-cogs"></i></th>
+                <th>ID</th>
+                <th>Pseudo</th>
+                <th>E-mail</th>
+                <th>Nbre de parties</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:if="${joueurs.empty}">
+                <td colspan="3">Aucun joueur en base de données</td>
+            </tr>
+            <tr th:each="joueur: ${joueurs}">
+                <td>
+                    <a th:href="@{/joueur/{id}/fiche(id=${joueur.id})}"><i class="fa fa-file"></i></a>
+                    <a th:href="@{/joueur/{id}/supprimer(id=${joueur.id})}"><i class="fa fa-trash text-danger"></i></a>
+                    <a th:href="@{/joueur/{id}/modifier(id=${joueur.id})}"><i class="fa fa-pen"></i></a>
+                </td>
+                <td><span th:text="${joueur.id}"> Identifiant </span></td>
+                <td><span th:text="${joueur.nickname}"> Pseudo </span></td>
+                <td><span th:text="${joueur.email}">E-mail</span></td>
+                <td><span th:text="${joueur.contests}"></span></td>
+            </tr>
+        </tbody>
+    </table>    
+
+    <th:block th:include="_communs/footer.html"></th:block>

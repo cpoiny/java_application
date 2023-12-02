@@ -1,0 +1,23 @@
+
+<th:block th:include="_communs/header.html"></th:block>
+    
+    <h1 class="alert alert-primary text-center">Fiche joueur à supprimer</h1>
+        <form method="post" th:action="@{/joueur/{id}/supprimer(id=${joueur.id})}" th:object="${joueur}">
+            <div class="form-group">
+                <label for="nickname">Pseudo</label>
+                <input type="text" th:field="*{nickname}" id="nickname" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="text" th:field="*{email}" id="email" class="form-control">
+            </div>
+    
+            <div class="d-flex mt-3 justify-content-between">
+                <button type="submit" class="btn btn-primary">
+                    <i class="fa fa-save"></i> Supprimer
+
+                    </button>
+            </div>
+        </form>
+    <!-- Afficher les informations du joueur -->
+    <th:block th:include="_communs/footer.html"></th:block>

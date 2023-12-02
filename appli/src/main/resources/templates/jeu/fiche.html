@@ -1,0 +1,31 @@
+<th:block th:include="_communs/header.html"></th:block>
+
+    <h1 class="alert alert-primary text-center">Fiche jeu</h1>
+
+    <ul class="list-group">
+        <li class="list-group-item d-flex">
+            <div class="col">Identifiant:</div>
+            <div class="col" th:text="${jeu.id}"></div>
+        </li>
+        <li class="list-group-item d-flex">
+            <div class="col">Nom:</div>
+            <div class="col" th:text="${jeu.title}"></div>
+        </li>
+        <li class="list-group-item d-flex">
+            <div class="col">Min joueur:</div>
+            <div class="col" th:text="${jeu.min}"></div>
+        </li>
+        <li class="list-group-item d-flex">
+            <div class="col">Max joueur:</div>
+            <div class="col" th:text="${jeu.max}"></div>
+        </li>
+        <li class="list-group-item d-flex">
+            <div class="col">Parties:</div>
+            <div class="col" th:each="contest : ${jeu.contests}">
+                <div th:text="${contest}"></div>
+            </div>
+        </li>
+    </ul>
+
+    <!-- Afficher les informations du jeu -->
+    <th:block th:include="_communs/footer.html"></th:block>

@@ -1,0 +1,27 @@
+<th:block th:include="_communs/header.html"></th:block>
+
+    <h1 class="alert alert-primary text-center">Fiche Partie</h1>
+
+    <ul class="list-group d-flex">
+        <li class="list-group-item d-flex">
+            <div class="col">Jeu:</div>
+            <div class="col" th:text="${partie.game}"></div>
+        </li>
+        <li class="list-group-item d-flex">
+            <div class="col">Date de la partie:</div>
+            <div class="col" th:text="${partie.startDate}"></div>
+        </li>
+        <li class="list-group-item d-flex">
+            <div class="col">Gagnant de la partie:</div>
+            <div class="col" th:text="${partie.winner}"></div>
+        </li>
+        <li class="list-group-item d-flex">
+            <div class="col">Liste des participants:</div>
+            <div class="col" th:each="joueur : ${partie.players}">
+                <div th:text="${joueur}"></div>
+            </div>
+        </li>
+    </ul>
+
+    <!-- Afficher les informations du jeu -->
+    <th:block th:include="_communs/footer.html"></th:block>

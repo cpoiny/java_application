@@ -1,0 +1,47 @@
+
+<th:block th:include="_communs/header.html"></th:block>
+
+    <h1 class="alert alert-primary text-center">Parties</h1>
+
+    <h2>Liste des Parties
+        <a href="/parties/ajouter" class="btn btn-primary"><i class="fa fa-plus"></i></a>
+    </h2>
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th><i class="fa fa-cogs"></i></th>
+                <th>ID</th>
+                <th>Nom du jeu</th>
+                <th>Date de la partie</th>
+                <th>Participants</th>
+                <th>Vainqueur de la partie</th>
+                <!-- <th>Nombres de participants</th> -->
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:if="${parties.empty}">
+                <td colspan="4">Aucune partie en base de données pour ce jeu </td>
+            </tr>
+            <tr th:each="partie: ${parties}">
+                <td>
+                    <a th:href="@{/parties/{id}/fiche(id=${partie.id})}"><i class="fa fa-file"></i></a>
+                    <a th:href="@{/parties/{id}/supprimer(id=${partie.id})}"><i class="fa fa-trash text-danger"></i></a>
+                    <a th:href="@{/parties/{id}/modifier(id=${partie.id})}"><i class="fa fa-pen"></i></a>
+                </td>
+                <td><span th:text="${partie.id}"> Id </span></td>
+                <td><span th:text="${partie.game}"> Jeu </span></td>
+                <td><span th:text="${partie.startDate}"> Date </span></td>
+                <td>
+                    <ul>
+                        <li th:each="joueur : ${partie.players}" th:text="${joueur}"></li>
+                    </ul>
+                    <a th:href="@{/parties/{id}/ajouter-participant(id=${partie.id})}" class="btn btn-primary"><i class="fa fa-plus"></i></a>
+                    <a th:href="@{/parties/{id}/supprimer-participant(id=${partie.id})}" class="btn btn-primary"><i class="fa fa-eraser"></i></a>
+                </td>
+                <td><a th:href="@{/parties/{id}/choisir-vainqueur(id=${partie.id})}"><span th:text="${partie.winner}">Vainqueur</span></a></td>
+                <!-- <td><span th:text="${partie.joueurs}">Participants</span></td> -->
+            </tr>
+        </tbody>
+    </table>    
+
+    <th:block th:include="_communs/footer.html"></th:block>

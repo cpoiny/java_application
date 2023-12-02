@@ -1,0 +1,36 @@
+<th:block th:include="_communs/header.html"></th:block>
+
+
+<h1 class="alert alert-primary text-center">Formulaire</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label for="start_date">Date</label>
+        <input type="date" class="form-control" id="start_date" name="start_date">
+    </div>
+
+    <div class="form-group">
+        <label for="game_id">Choisir un jeu:</label>
+        <select name="game_id" id="game_id" class="form-control">
+            <option value=""></option>
+            <!-- th:value = c'est la valeur que je vais envoyer dans mon formulaire qui attend un game_id donc on met ${jeu.id} -->
+            <option th:each="jeu : ${jeux}" th:value="${jeu.id}" th:text="${jeu.title}"></option>
+        </select>
+    </div>
+
+
+
+    <div class="d-flex mt-3 justify-content-between">
+        <button type="submit" class="btn btn-primary">
+            <i class="fa fa-save"></i> Enregistrer
+        </button>
+        <button type="reset" class="btn btn-warning">
+            <i class="fa fa-eraser"></i> Effacer
+        </button>
+        <a th:href="@{/parties}" class="btn btn-danger">
+            <i class="fa fa-reply"></i> Retour
+        </a>
+    </div>
+</form>
+
+<th:block th:include="_communs/footer.html"></th:block>
